@@ -1,10 +1,11 @@
 
 
+
 import streamlit as st
 st.markdown(""""
     <style>
     body{
-    background-colour: #1e1e2f;
+    background-color: #1e1e2f;
     colour:white;
 
     }
@@ -15,13 +16,13 @@ st.markdown(""""
         box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
     }
 h1{
-    text-aling: center;
+    text-align: center;
     font-size: 30px;
     colour: white;
     }
    .stButton>button{
         background: linear-gradient(45deg, #0b5394, #351c75);
-        colour: white;
+        color: white;
         font-size: 18px;
         padding: 10px, 20px;
         border-radius: 10px;
@@ -31,23 +32,23 @@ h1{
    .stButton>button:hover{
         transform: scale(1.05);
         background: linear-gradient(45deg, #92fe9d, #00c9ff);
-        colour: black
+        color: black
    }
    .result-box{
         font-size: 20px;
          font-weight: bold;
-          text-aling: center;
+          text-align: center;
           background: rgba(255, 255, 255, 0.1);
           padding: 25px;
           border-radius: 10px;
-          marging-top: 20px;
+          margin-top: 20px;
           box-shadow: 0px 5px rgba(0, 201, 255, 0.3);
     }
     .footer{
         text-aling: center;
         marging-top: 50px;
-        fot-sixe: 14px;
-        colour: black
+        font-size: 14px;
+        color: black
     }
     </style>
     """,
@@ -59,9 +60,9 @@ st.markdown("<h1> unit convertorusing python and streamlit </h1>", unsafe_allow_
 st.write("easily convert between diffrent units of length, weight, and temperature.")
 
 #sidebar menu
-conversion_type = st.sidebar.selectionbox("Choose Conversion Type", ["Length", "Weight", "Temperature"])
+conversion_type = st.sidebar.selectbox("Choose Conversion Type", ["Length", "Weight", "Temperature"])
 value =st.number_input("Enter Value", value=0.0, min_value=0.0, STEP=0.1)
-Col1, Col2 = st.columns(2)
+col1, col2 = st.columns(2)
 
 if conversion_type == "Length":
     with col1:
@@ -77,18 +78,18 @@ elif conversion_type == "Temperature":
     with col1:
         from_unit = st.selectbox("From", ["Celcius", "Fahrenheit", "Kelvin",])
     with col2:
-        from_unit = st.selectbox("To", ["Celcius", "Fahrenheit", "Kelvin"])    
+        to_unit = st.selectbox("To", ["Celcius", "Fahrenheit", "Kelvin"])    
 
 #converted function 
 def length_convertor(value, from_unit, to_unit):
     length_units = {
-      'Meters': 1, 'Kilometers': 0.001, 'Centimeters': 100, 'Milimeters': 1000, 
+      'Meters': 1, 'Kilometers': 0.001,  'Centimeters': 100, 'Milimeters': 1000, 
       'Miles': 0.000621371, 'Yards': 1.09631, 'Feet': 3.28, 'Inches': 39.37
     }
     return(value / length_units[from_unit] * length_units[to_unit]) 
 def weight_convertor(value, from_unit, to_unit):
     weight_units = {
-      'Kilogram': 1, 'Grams': 1000, 'Miligrams': 1000000, 'Pounds': 2.2046, 'Ounces': 35.27
+      'Kilograms': 1, 'Grams': 1000, 'Miligrams': 1000000, 'Pounds': 2.2046, 'Ounces': 35.27
     }  
     return (value / weight_units[from_unit] * weight_units[to_unit])
 
@@ -107,13 +108,14 @@ if st.button("Convert"):
         result = length_convertor(value, from_unit, to_unit)
     elif  conversion_type == "Weight":
         result = weight_convertor(value, from_unit,to_unit)
-    elif conversion_tpye == "Temperature":
+    elif conversion_type == "Temperature":
         result = temp_convertor(value, from_unit, to_unit)
 
     st.markdown(f"<div class='result-box'>{value} {from_unit} = {result:.4f} {to_unit}</div>", unsafe_allow_html=True)
 
 st.markdown("<div> class='footer'>created with loveby Arfa /div>", unsafe_allow_html=True)
     
+
 
 
 
