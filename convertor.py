@@ -82,13 +82,13 @@ elif conversion_type == "Temperature":
 #converted function 
 def length_convertor(value, from_unit, to_unit):
     length_units = {
-      'Meters': 1; 'Kilometers': 0.001  'Centimeters': 100, 'Milimeters': 1000, 
+      'Meters': 1, 'Kilometers': 0.001, 'Centimeters': 100, 'Milimeters': 1000, 
       'Miles': 0.000621371, 'Yards': 1.09631, 'Feet': 3.28, 'Inches': 39.37
     }
     return(value / length_units[from_unit] * length_units[to_unit]) 
 def weight_convertor(value, from_unit, to_unit):
     weight_units = {
-      'Kilogram': 1, 'Grams': 1000, 'Miligrams': 1000000 'Pounds': 2.2046, 'Ounces': 35.27
+      'Kilogram': 1, 'Grams': 1000, 'Miligrams': 1000000, 'Pounds': 2.2046, 'Ounces': 35.27
     }  
     return (value / weight_units[from_unit] * weight_units[to_unit])
 
